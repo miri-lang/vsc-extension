@@ -14,6 +14,8 @@ You can install this extension directly from the VS Code Marketplace (search for
 ### Example Code
 
 ```miri
+use system.io
+
 fn main()
     let x int = 10
     let message = f"Value is {x}"
@@ -22,15 +24,15 @@ fn main()
 
 ## Contributing
 
-To contribute to this extension or the Miri language compiler itself, please visit the [Miri GitHub Repository](https://github.com/miri-lang/miri/tree/main/vsc-extension).
+To contribute to this extension or the Miri language compiler itself, please visit the [Extension GitHub Repository](https://github.com/miri-lang/vsc-extension).
 
 ### Local Development
 
-1. Clone the repository: `git clone https://github.com/miri-lang/miri.git`
-2. Navigate to the extension folder: `cd miri/vsc-extension`
+1. Clone the repository: `git clone https://github.com/miri-lang/vsc-extension.git`
+2. Navigate to the extension folder: `cd vsc-extension`
 3. Install dependencies: `npm install`
 4. Open the folder in VS Code and press `F5` to start debugging.
 
 ## License
 
-This project is licensed under the Apache 2.0 License - see the LICENSE file for details.
+[Apache-2.0](LICENSE)

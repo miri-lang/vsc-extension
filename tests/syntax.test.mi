@@ -1,0 +1,99 @@
+// SYNTAX TEST "source.miri" "Syntax showcasing for Miri language"
+
+// Keywords and Control Flow
+fn main()
+    let x int = 10
+    var y float = 20.5
+    const z = None
+
+    if x == 10
+        print("x is 10")
+    else if x > 5
+        print("x is greater than 5")
+    else
+        print("x is small")
+
+    unless y < 10.0
+        print("y is large")
+
+    for i in 1..10
+        print(i)
+
+    while x > 0: x -= 1
+
+    do
+        x += 1
+    while x < 5
+
+    until x == 10
+        x += 1
+
+    forever
+        break
+
+    match x
+        1: print("one")
+        default: print("default")
+
+// Types and Data Structures
+type ID = int
+struct Point
+    x int
+    y int
+
+enum Status
+    Active
+    Inactive
+
+class Person
+    name String
+    age int
+
+    fn new(name String, age int) Person
+        return Person { name, age }
+
+trait Drawable
+    fn draw()
+
+// Concurrency and Async
+async fn fetch_data() String
+    return "data"
+
+async fn process()
+    let data = await fetch_data()
+    spawn worker()
+    parallel
+        task1()
+        task2()
+
+// GPU and System
+gpu fn compute(buffer list[float])
+    let i = local.id
+    buffer[i] *= 2.0
+
+// Imports
+use system.io
+use system.gpu.{local, shared}
+
+// Modifiers
+public fn pub_func()
+private var priv_var
+protected const PROT = 1
+abstract class Base
+runtime fn sys_call()
+
+// Strings
+let s1 = 'single quoted'
+let s2 = "double quoted"
+let f1 = f"formatted {x}"
+let r1 = re"[a-z]+"ig
+
+// Numbers
+let num1 = 1_000_000
+let num2 = 3.14159
+let hex = 0xFF
+let bin = 0b1010
+let oct = 0o777
+
+// Symbols
+let sym = :my_symbol

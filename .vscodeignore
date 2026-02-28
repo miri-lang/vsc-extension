@@ -1,0 +1,15 @@
+.vscode/**
+.vscode-test/**
+out/**
+dist/**
+node_modules/**
+src/**
+.gitignore
+.yarnrc
+.yarn/**
+tests/**
+vsc-extension-*.vsix
+*.config.js
+.github/**
+AGENTS.md
+CLAUDE.md

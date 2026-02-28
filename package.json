@@ -25,7 +25,7 @@
         "Programming Languages"
     ],
     "scripts": {
-        "package": "vsce package",
+        "package": "npx @vscode/vsce package",
         "test": "vscode-tmgrammar-test \"tests/**/*.mi\""
     },
     "devDependencies": {

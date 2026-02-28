@@ -3,15 +3,15 @@
     "displayName": "Miri Language Support",
     "description": "Syntax highlighting and language support for the Miri programming language.",
     "version": "0.1.0",
-    "publisher": "miri-lang",
+    "publisher": "MiriLang",
     "author": "Viacheslav Shynkarenko",
     "license": "Apache-2.0",
     "repository": {
         "type": "git",
-        "url": "https://github.com/miri-lang/miri.git"
+        "url": "https://github.com/miri-lang/vsc-extension"
     },
     "bugs": {
-        "url": "https://github.com/miri-lang/miri/issues"
+        "url": "https://github.com/miri-lang/vsc-extension/issues"
     },
     "keywords": [
         "miri",

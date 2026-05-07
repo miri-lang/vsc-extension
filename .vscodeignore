@@ -13,3 +13,4 @@ vsc-extension-*.vsix
 .github/**
 AGENTS.md
 CLAUDE.md
+.code-review-graph/**

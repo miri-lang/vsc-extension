@@ -1,5 +1,11 @@
 // SYNTAX TEST "source.miri" "Syntax showcasing for Miri language"
 
+#!/usr/bin/env miri
+
+/* block comment
+   /* nested block comment */
+   still inside */
+
 // Keywords and Control Flow
 fn main()
     let x int = 10
@@ -19,6 +25,9 @@ fn main()
     for i in 1..10
         print(i)
 
+    for i in 1..=10
+        print(i)
+
     while x > 0: x -= 1
 
     do
@@ -33,6 +42,8 @@ fn main()
 
     match x
         1: print("one")
+        2 | 3: print("two or three")
+        n if n > 10: print("large")
         default: print("default")
 
 // Types and Data Structures
@@ -55,6 +66,9 @@ class Person
 trait Drawable
     fn draw()
 
+trait SameAs
+    fn same(other Self) bool
+
 // Concurrency and Async
 async fn fetch_data() String
     return "data"
@@ -74,6 +88,8 @@ gpu fn compute(buffer list[float])
 // Imports
 use system.io
 use system.gpu.{local, shared}
+use system.collections.list as L
+use local.utils.math
 
 // Modifiers
 public fn pub_func()
@@ -81,19 +97,53 @@ private var priv_var
 protected const PROT = 1
 abstract class Base
 runtime fn sys_call()
+out fn capture_by_ref()
 
 // Strings
 let s1 = 'single quoted'
 let s2 = "double quoted"
 let f1 = f"formatted {x}"
+let f2 = f'formatted {x}'
 let r1 = re"[a-z]+"ig
+let r2 = re'[a-z]+'igmsu
 
 // Numbers
 let num1 = 1_000_000
 let num2 = 3.14159
-let hex = 0xFF
-let bin = 0b1010
+let num3 = 1.5e10
+let num4 = 2_500e-3
+let hex = 0xFF_FF
+let bin = 0b1010_0101
 let oct = 0o777
+let big = 1_000_000_000_000
 
-// Symbols
-let sym = :my_symbol
+// Integer types
+let a i8 = 1
+let b i16 = 2
+let c i32 = 3
+let d i64 = 4
+let e i128 = 5
+let g u8 = 6
+let h u16 = 7
+let j u32 = 8
+let k u64 = 9
+let l u128 = 10
+
+// Operators
+let sum = a + b
+let diff = a - b
+let prod = a * b
+let quot = a / b
+let modu = a % b
+let eq = a == b
+let neq = a != b
+let geq = a >= b
+let leq = a <= b
+let and_ = a > 0 and b > 0
+let or_ = a > 0 or b > 0
+let not_ = not (a > 0)
+let coalesce = maybe ?? 0
+let ns = system::io::print
+let arrow = fn(x int) int: x * 2
+let ranged = 1..10
+let inclusive = 1..=10

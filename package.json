@@ -2,7 +2,7 @@
     "name": "miri-language",
     "displayName": "Miri Programming Language",
     "description": "Syntax highlighting and language support for the Miri programming language.",
-    "version": "0.1.2",
+    "version": "0.1.3",
     "publisher": "MiriLang",
     "author": "Viacheslav Shynkarenko",
     "license": "Apache-2.0",

@@ -5,6 +5,7 @@ This is the official Visual Studio Code extension for the [Miri programming lang
 ## Features
 
 - **Syntax Highlighting**: Comprehensive coloring for Miri keywords, types, strings, comments, and numbers.
+- **GPU Support**: Highlighting for GPU compute — `gpu fn` kernels, `forall` / `gpu forall` parallel launches, `gpu let` / `gpu var` residency bindings, the `host` residency modifier, `frame.*` per-frame inputs, thread builtins (`global_idx`, `thread_idx`, `block_idx`, `barrier`), `Vec2`/`Vec3`/`Vec4` types, and vector/math intrinsics (`dot`, `cross`, `normalize`, `mix`, `clamp`, `smoothstep`, ...).
 - **Language Configuration**: Basic auto-closing pairs and indentation rules.
 
 ## Installation
@@ -20,6 +21,18 @@ fn main()
     let x int = 10
     let message = f"Value is {x}"
     println(message)
+```
+
+### GPU Example
+
+```miri
+gpu fn scale(out data list[f32], factor f32)
+    data[global_idx] *= factor
+
+fn main()
+    var buffer = List<f32>()
+    gpu forall i in 0..1024
+        buffer[i] = mix(0.0, 1.0, fract(frame.time))
 ```
 
 ## Contributing

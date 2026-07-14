@@ -82,8 +82,43 @@ async fn process()
 
 // GPU and System
 gpu fn compute(buffer list[float])
-    let i = local.id
+    let i = global_idx
     buffer[i] *= 2.0
+
+// GPU residency bindings and kernels
+gpu let device_data = Array<f32, 1024>()
+gpu var scratch = Array<f32, 256>()
+
+// GPU parallel launch (forall / gpu forall)
+fn simulate(out data list[f32])
+    forall i in 0..1024
+        data[i] = data[i] * 2.0
+    gpu forall i in 0..1024
+        data[i] = clamp(data[i], 0.0, 1.0)
+
+// Vector builtins (GPU)
+gpu fn shade(out pixels list[Vec4])
+    let n = normalize(Vec3(1.0, 0.0, 0.0))
+    let d = dot(n, Vec3(0.0, 1.0, 0.0))
+    let c = cross(n, Vec3(0.0, 0.0, 1.0))
+    let m = mix(0.0, 1.0, fract(frame.time))
+    pixels[global_idx] = Vec4(d, m, length(c), 1.0)
+
+// Per-frame inputs and thread builtins
+gpu fn animate(out grid list[f32])
+    let t = frame.time
+    let mx = frame.mouse_x
+    barrier()
+    grid[thread_idx] = t + mx
+
+// Residency-polymorphic function
+fn scale(host data list[f32], factor f32)
+    forall i in 0..data.length()
+        data[i] *= factor
+
+// must_use return values
+must_use fn allocate() list[f32]
+    return List<f32>()
 
 // Imports
 use system.io

@@ -15,6 +15,9 @@
             "include": "#keywords"
         },
         {
+            "include": "#builtins"
+        },
+        {
             "include": "#constants"
         },
         {
@@ -175,7 +178,7 @@
             "patterns": [
                 {
                     "name": "keyword.control.miri",
-                    "match": "\\b(if|else|unless|for|while|do|until|forever|return|match|default|in|break|continue|await|spawn|parallel|from)\\b"
+                    "match": "\\b(if|else|unless|for|forall|while|do|until|forever|return|match|default|in|break|continue|await|spawn|parallel|from)\\b"
                 },
                 {
                     "name": "keyword.operator.logical.miri",
@@ -187,7 +190,7 @@
                 },
                 {
                     "name": "storage.modifier.miri",
-                    "match": "\\b(public|protected|shared|private|abstract|runtime|out)\\b"
+                    "match": "\\b(public|protected|shared|private|abstract|runtime|intrinsic|must_use|host|out)\\b"
                 },
                 {
                     "name": "keyword.other.miri",
@@ -195,7 +198,7 @@
                 },
                 {
                     "name": "variable.language.miri",
-                    "match": "\\b(self|super|Self)\\b"
+                    "match": "\\b(self|super|Self|frame|kernel)\\b"
                 }
             ]
         },
@@ -211,11 +214,27 @@
                 }
             ]
         },
+        "builtins": {
+            "patterns": [
+                {
+                    "name": "support.function.builtin.gpu.miri",
+                    "match": "\\b(global_idx|thread_idx|block_idx|barrier)\\b"
+                },
+                {
+                    "name": "support.function.builtin.math.miri",
+                    "match": "\\b(abs|min|max|pow|sqrt|floor|ceil|round|sin|cos|tan|log|exp|tanh|exp2|log2|atan2|fract|clamp|mix|smoothstep|step|sign|dot|cross|normalize|length|distance|reflect|refract)(?=\\s*\\()"
+                }
+            ]
+        },
         "types": {
             "patterns": [
                 {
                     "name": "support.type.primitive.miri",
                     "match": "\\b(int|i8|i16|i32|i64|i128|u8|u16|u32|u64|u128|float|f32|f64|bool|String)\\b"
+                },
+                {
+                    "name": "support.type.vector.gpu.miri",
+                    "match": "\\b(Vec2|Vec3|Vec4)\\b"
                 },
                 {
                     "name": "entity.name.type.miri",

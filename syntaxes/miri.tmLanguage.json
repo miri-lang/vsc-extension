@@ -9,6 +9,9 @@
             "include": "#strings"
         },
         {
+            "include": "#attributes"
+        },
+        {
             "include": "#numbers"
         },
         {
@@ -146,6 +149,19 @@
                 }
             ]
         },
+        "attributes": {
+            "patterns": [
+                {
+                    "name": "entity.name.function.decorator.miri",
+                    "match": "@(?:non_exhaustive|must_use|deprecated|test|ignore|xfail|index_bounds_check)\\b"
+                },
+                {
+                    "comment": "Attributes are a closed set; anything else is a compile error.",
+                    "name": "invalid.illegal.attribute.miri",
+                    "match": "@[a-zA-Z_][a-zA-Z0-9_]*"
+                }
+            ]
+        },
         "numbers": {
             "patterns": [
                 {
@@ -190,7 +206,7 @@
                 },
                 {
                     "name": "storage.modifier.miri",
-                    "match": "\\b(public|protected|shared|private|abstract|runtime|intrinsic|must_use|host|out)\\b"
+                    "match": "\\b(public|protected|shared|private|abstract|runtime|intrinsic|static|host|out)\\b"
                 },
                 {
                     "name": "keyword.other.miri",

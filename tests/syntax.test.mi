@@ -116,14 +116,51 @@ fn scale(host data list[f32], factor f32)
     forall i in 0..data.length()
         data[i] *= factor
 
-// must_use return values
-must_use fn allocate() list[f32]
-    return List<f32>()
+// Attributes — a closed set; an unknown one is a compile error
+@must_use
+enum Receipt
+    Written(int)
+
+@non_exhaustive
+enum FsError
+    NotFound(String)
+
+@deprecated("acquire a Clock and use clock.now()")
+fn legacy_timestamp() int
+    0
+
+@test
+fn addition_works()
+    assert_eq(2 + 2, 4)
+
+@test
+@ignore("needs a fixture file")
+fn reads_the_config()
+    assert(false)
+
+@test
+@xfail("known bug, tracked upstream")
+fn known_bug()
+    assert_eq(1, 2)
+
+// Static class members
+class Duration
+    millis int
+
+    public static fn from_millis(n int) Duration
+        Duration(millis: n)
 
 // Imports
 use system.io
 use system.gpu.{local, shared}
 use system.collections.list as L
+use system.collections.queue
+use system.collections.stack
+use system.text
+use system.json
+use system.fs
+use system.os
+use system.time
 use local.utils.math
 
 // Modifiers

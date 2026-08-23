@@ -6,6 +6,8 @@ This is the official Visual Studio Code extension for the [Miri programming lang
 
 - **Syntax Highlighting**: Comprehensive coloring for Miri keywords, types, strings, comments, and numbers.
 - **GPU Support**: Highlighting for GPU compute — `gpu fn` kernels, `forall` / `gpu forall` parallel launches, `gpu let` / `gpu var` residency bindings, the `host` residency modifier, `frame.*` per-frame inputs, thread builtins (`global_idx`, `thread_idx`, `block_idx`, `barrier`), `Vec2`/`Vec3`/`Vec4` types, and vector/math intrinsics (`dot`, `cross`, `normalize`, `mix`, `clamp`, `smoothstep`, ...).
+- **Attributes**: Highlighting for the closed attribute set — `@test`, `@ignore`, `@xfail`, `@must_use`, `@non_exhaustive`, `@deprecated`. Because the set is closed in the language, an unrecognised attribute is highlighted as an error rather than silently coloured like a working one.
+- **Standard Library**: Regex literals (`re"^\d+$"i`), static class members (`public static fn`), and the modules added in 0.6.0-beta.4 — `system.text`, `system.json`, `system.fs`, `system.os`, `system.time`, `system.collections.queue` and `system.collections.stack`.
 - **Language Configuration**: Basic auto-closing pairs and indentation rules.
 
 ## Installation
@@ -16,11 +18,16 @@ You can install this extension directly from the VS Code Marketplace (search for
 
 ```miri
 use system.io
+use system.testing
 
 fn main()
     let x int = 10
     let message = f"Value is {x}"
     println(message)
+
+@test
+fn value_is_ten()
+    assert_eq(10, 10)
 ```
 
 ### GPU Example

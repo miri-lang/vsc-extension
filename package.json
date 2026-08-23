@@ -2,7 +2,7 @@
     "name": "miri-language",
     "displayName": "Miri Programming Language",
     "description": "Syntax highlighting and language support for the Miri programming language.",
-    "version": "0.2.0",
+    "version": "0.3.0",
     "publisher": "MiriLang",
     "author": "Viacheslav Shynkarenko",
     "license": "Apache-2.0",
@@ -18,7 +18,9 @@
         "language",
         "syntax",
         "gpu",
-        "compute"
+        "compute",
+        "stdlib",
+        "testing"
     ],
     "engines": {
         "vscode": "^1.70.0"
